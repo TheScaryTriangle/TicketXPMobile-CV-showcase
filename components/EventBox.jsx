@@ -8,8 +8,6 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * @param {Obj} EventData The object of the event
  */
 const EventBox = ({ EventData }) => {
-    console.log(EventData)
-
     /**
      * @notice Triggers when the user taps the component
      * @todo Navigate to the event page after

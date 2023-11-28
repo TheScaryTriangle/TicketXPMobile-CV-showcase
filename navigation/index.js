@@ -2,13 +2,15 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Header from "../components/Header";
 import Homescreen from '../screens/Homescreen'
+import TicketQR from '../components/TicketQR';
 
 const navigation = () => {
 
     return (
         <View style={styles.navigationScreen}>
-            <Header/>
-            <Homescreen/>
+            <Header />
+            <Homescreen />
+            <TicketQR />
         </View>
     )
 }
