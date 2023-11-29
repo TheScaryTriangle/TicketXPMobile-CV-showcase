@@ -18,17 +18,17 @@ const EventBox = ({ EventData }) => {
 
     return (
         <Pressable style={styles.eventBoxContainer} onPress={() => buttonPress()}>
-            <Text>
-                {EventData?.EventName}
+            <Text style={styles.text}>
+                Event Name: {EventData?.EventName}
             </Text>
-            <Text>
-                {EventData?.EventDetails}
+            <Text style={styles.text}>
+                Event Details: {EventData?.EventDetails}
             </Text>
-            <Text>
-                {EventData?.TicketPrice}
+            <Text style={styles.text}>
+                Ticket Price: {EventData?.TicketPrice}
             </Text>
-            <Text>
-                {EventData?.EventDate}
+            <Text style={styles.text}>
+                Event Date: {EventData?.EventDate}
             </Text>
         </Pressable>
     )
@@ -38,9 +38,15 @@ const styles = StyleSheet.create({
     eventBoxContainer: {
         height: "50%",
         width: "100%",
-        backgroundColor: '#aaaaaa',
-        padding: "5%",
-        borderRadius: 50
+        backgroundColor: '#FFFFFF',
+        borderWidth: 2,
+        borderColor: '#000000',
+        padding: 10,
+        borderRadius: 10,
+    },
+    text: {
+        fontSize: 16,
+        marginBottom: 5,
     },
 });
 

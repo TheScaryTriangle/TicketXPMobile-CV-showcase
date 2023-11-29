@@ -11,9 +11,10 @@ const ErrorScreen = ({ errorMessage, onRetry, buttonMessage = "Retry" }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.errorText}>{errorMessage}</Text>
-      <TouchableOpacity onPress={onRetry} style={styles.retryButton}>
-        <Text style={styles.retryText}>{buttonMessage}</Text>
-      </TouchableOpacity>
+      <Button
+        title = {buttonMessage}
+        onPress = {onRetry}
+      />
     </View>
   );
 };

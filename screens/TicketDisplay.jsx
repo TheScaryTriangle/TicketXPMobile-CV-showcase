@@ -13,6 +13,7 @@ import ErrorScreen from './ErrorScreen';
 
 /**
  * @dev Page display's the user's ticket
+ * @todo Get the specific ticket and pass it to this page
  */
 const TicketDisplay = () => {
     const [qrSVG, setQRSVG] = useState("")

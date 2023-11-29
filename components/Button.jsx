@@ -1,6 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
+/**
+ * @dev Standard button component for the app
+ * @dev Do not use any other custom buttons
+ */
 const Button = ({ title, onPress, buttonStyle, textStyle }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, buttonStyle]}>
