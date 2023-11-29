@@ -4,21 +4,7 @@ import { Svg, Path } from 'react-native-svg';
 
 import qrModule from '../api/qrModule'
 
-const TicketQR = () => {
-    const [qrSVG, setQRSVG] = useState("")
-    
-    useEffect(() => {
-        setup()
-    }, []);
-
-    const setup = async () => {
-        try {
-            const qrCode = await qrModule.getQRCode()
-            setQRSVG(qrCode)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+const TicketQR = ({TicketSVG}) => {
 
     return (
         <View style={styles.headerBox}>
@@ -26,8 +12,8 @@ const TicketQR = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 57 57"
                 shape-rendering="crispEdges"
-                width={200}
-                height={200}
+                width={'100%'}
+                height={'100%'}
             >
                 <Path fill="#ffffff" d="M0 0h57v57H0z" />
                 <Path
@@ -42,7 +28,7 @@ const TicketQR = () => {
 const styles = StyleSheet.create({
     headerBox: {
         alignItems: 'center',
-        height: "10%",
+        height: "40%",
         width: "100%",
     },
 });

@@ -2,7 +2,7 @@ import apiCall from "./controler";
 
 const getAllEventDetails = async () => {
     try {
-        const url = `ticketModule/GetHomepageEvents`;
+        const url = `eventRoutes/GetHomepageEvents`;
         const eventCallRequest = await apiCall.getURL(url);
         return eventCallRequest;
     } catch (error) {
@@ -13,7 +13,7 @@ const getAllEventDetails = async () => {
 
 const getEventFromId = async (Id) => {
     try {
-        const url = `ticketModule/GetEventById`;
+        const url = `eventRoutes/GetEventById`;
         const eventCallRequest = await apiCall.postURL(url, { id: Id });
         return eventCallRequest;
     } catch (error) {
@@ -24,7 +24,7 @@ const getEventFromId = async (Id) => {
 
 const addNewEvent = async (obj) => {
     try {
-        const url = `ticketModule/AddEvent`;
+        const url = `eventRoutes/AddEvent`;
         const eventCallRequest = await apiCall.postURL(url, obj);
         return eventCallRequest;
     } catch (error) {
@@ -35,7 +35,7 @@ const addNewEvent = async (obj) => {
 
 const deleteEvent = async (Id) => {
     try {
-        const url = `ticketModule/deleteEvent`;
+        const url = `eventRoutes/deleteEvent`;
         const deleteCallRequest = await apiCall.postURL(url, { id: Id });
         return deleteCallRequest;
     } catch (error) {

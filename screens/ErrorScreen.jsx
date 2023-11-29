@@ -1,12 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Button from '../components/Button';
 
-const ErrorScreen = ({ errorMessage, onRetry }) => {
+/**
+ * @dev Use this as the standard error message page
+ * @param errorMessage The message that shows above the retry button
+ * @returns 
+ */
+const ErrorScreen = ({ errorMessage, onRetry, buttonMessage = "Retry" }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.errorText}>{errorMessage}</Text>
       <TouchableOpacity onPress={onRetry} style={styles.retryButton}>
-        <Text style={styles.retryText}>Retry</Text>
+        <Text style={styles.retryText}>{buttonMessage}</Text>
       </TouchableOpacity>
     </View>
   );

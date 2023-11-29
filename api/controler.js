@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseUrl = "http://377d-2a00-23c7-d001-d01-4f47-1f5c-9b05-fea.ngrok-free.app/api/"
+export const baseUrl = "https://dee0-37-203-152-77.ngrok-free.app/api/"
 
 const apiClient = axios.create({
   baseURL: baseUrl,

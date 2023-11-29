@@ -4,7 +4,7 @@ import { ActivityIndicator, View, Text } from "react-native"
 //Components
 import EventBox from "../components/EventBox"
 import Loading from '../components/Loading';
-import ErrorScreen from '../components/ErrorScreen';
+import ErrorScreen from './ErrorScreen';
 //API
 import eventModule from "../api/eventModule"
 import { err } from 'react-native-svg';
@@ -36,7 +36,10 @@ const Homescreen = () => {
 
     if (error) {
         return (
-            <ErrorScreen />
+            <ErrorScreen
+                errorMessage={""}
+                onRetry={setup()}
+            />
         )
     }
     return (
