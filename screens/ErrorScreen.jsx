@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Button from '../components/Button';
+import Button from '../components/basic/Button';
 
 /**
  * @dev Use this as the standard error message page

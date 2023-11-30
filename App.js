@@ -1,15 +1,15 @@
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
-import { StyleSheet, Text, View } from 'react-native';
-import defaultStyle from './styles'
-import Navigation from './navigation'
+import Navigation from './navigation';
+import defaultStyle from './styles'; 
 
 export default function App() {
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
       <View style={defaultStyle.container}>
         <Navigation />
       </View>
-    </NavigationContainer>
+    // </NavigationContainer>
   );
 }

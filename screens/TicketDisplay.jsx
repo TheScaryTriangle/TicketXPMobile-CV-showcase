@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import TicketQR from '../components/TicketQR';
-import Button from '../components/Button';
+import Button from '../components/basic/Button';
 import Loading from '../components/Loading';
 
 import formatDate from '../utility/formatDate';

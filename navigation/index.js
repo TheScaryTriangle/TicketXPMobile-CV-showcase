@@ -1,20 +1,42 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+// Pages
 import Header from "../components/Header";
+import Login from '../screens/Login';
 import Homescreen from '../screens/Homescreen'
 import TicketDisplay from '../screens/TicketDisplay';
 import VendorScanner from '../screens/VendorScanner';
 import EventPage from '../screens/EventPage';
 
-const navigation = () => {
+const Stack = createStackNavigator();
 
+const navigation = () => {
     return (
-        <View style={styles.navigationScreen}>
-            <Header />
-            {/* <TicketDisplay /> */}
-            <EventPage/>
-            {/* <VendorScanner/> */}
-        </View>
+        <NavigationContainer >
+            <View style={styles.navigationScreen}>
+                <Header />
+                <Stack.Navigator initialRouteName="Login">
+                    <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }} />
+                    <Stack.Screen name="Homescreen" component={Homescreen} options={{ title: 'Homescreen' }} />
+                    <Stack.Screen name="TicketDisplay" component={TicketDisplay} options={{ title: 'Homescreen' }} />
+                    <Stack.Screen name="VendorScanner" component={VendorScanner} options={{ title: 'Homescreen' }} />
+                    <Stack.Screen name="EventPage" component={EventPage} options={{ title: 'Homescreen' }} />
+                </Stack.Navigator>
+            </View>
+        </NavigationContainer>
+    )
+}
+
+const StackPage = ({ stackName, stackComponent }) => {
+    return (
+        <Stack.Screen
+            name={stackName}
+            component={stackComponent}
+        // options={{ title: 'Homescreen' }}
+        />
     )
 }
 
