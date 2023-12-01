@@ -10,12 +10,13 @@ import formatDate from '../utility/formatDate';
 import qrModule from '../api/qrModule'
 
 import ErrorScreen from './ErrorScreen';
+import navigation from '../navigation';
 
 /**
  * @dev Page display's the user's ticket
  * @todo Get the specific ticket and pass it to this page
  */
-const TicketDisplay = ({ navigation }) => {
+const UserTickets = ({ navigation }) => {
     const [qrSVG, setQRSVG] = useState("")
     const [ticketData, setTicketData] = useState(null)
 
@@ -49,7 +50,7 @@ const TicketDisplay = ({ navigation }) => {
      * @dev Used to dismiss this page
      */
     const dismiss = () => {
-
+        navigation.goBack()
     }
 
     if (isLoading) {
@@ -105,4 +106,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default TicketDisplay
+export default UserTickets

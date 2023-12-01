@@ -7,17 +7,10 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * @notice Fetch the event data before passing to this component
  * @param {Obj} EventData The object of the event
  */
-const EventBox = ({ EventData }) => {
-    /**
-     * @notice Triggers when the user taps the component
-     * @todo Navigate to the event page after
-     */
-    const buttonPress = () => {
-        console.log("!")
-    }
+const EventBox = ({ EventData, onPress }) => {
 
     return (
-        <Pressable style={styles.eventBoxContainer} onPress={() => buttonPress()}>
+        <Pressable style={styles.eventBoxContainer} onPress={() => onPress()}>
             <Text style={styles.text}>
                 Event Name: {EventData?.EventName}
             </Text>

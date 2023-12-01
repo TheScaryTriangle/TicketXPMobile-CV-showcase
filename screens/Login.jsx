@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={(values) => handleLogin(values)}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema} // Uncomment this for validation
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
           <View>
@@ -54,6 +54,8 @@ const Login = ({ navigation }) => {
           </View>
         )}
       </Formik>
+      <Button onPress={() => navigation.navigate("VendorScanner")} title="Vendor Login" />
+
     </View>
   );
 };

@@ -5,11 +5,13 @@ import { ActivityIndicator, View, Text } from "react-native"
 import EventBox from "../components/EventBox"
 import Loading from '../components/Loading';
 import ErrorScreen from './ErrorScreen';
+import Button from '../components/basic/Button';
+
 //API
 import eventModule from "../api/eventModule"
-import { err } from 'react-native-svg';
 
-const Homescreen = () => {
+
+const Homescreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
     const [eventData, setEventData] = useState([])
@@ -27,6 +29,16 @@ const Homescreen = () => {
         }
         setIsLoading(false)
     }
+
+    /**
+     * @notice Triggers when the user taps the eventBox component
+     * @todo Navigate to the event page after
+     */
+    const buttonPress = () => {
+        console.log("!")
+        navigation.navigate("EventPage")
+    }
+
 
     if (isLoading) {
         return (
@@ -49,10 +61,15 @@ const Homescreen = () => {
                     <View key={i}>
                         <EventBox
                             EventData={event}
+                            onPress = {buttonPress}
                         />
                     </View>
                 )
             })}
+            <Button
+                title={"My Tickets"}
+                onPress={() => navigation.navigate("UserTickets")}
+            />
 
         </View>
     )

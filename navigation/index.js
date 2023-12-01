@@ -10,6 +10,7 @@ import Homescreen from '../screens/Homescreen'
 import TicketDisplay from '../screens/TicketDisplay';
 import VendorScanner from '../screens/VendorScanner';
 import EventPage from '../screens/EventPage';
+import UserTickets from '../screens/UserTickets';
 
 const Stack = createStackNavigator();
 
@@ -24,19 +25,10 @@ const navigation = () => {
                     <Stack.Screen name="TicketDisplay" component={TicketDisplay} options={{ title: 'Homescreen' }} />
                     <Stack.Screen name="VendorScanner" component={VendorScanner} options={{ title: 'Homescreen' }} />
                     <Stack.Screen name="EventPage" component={EventPage} options={{ title: 'Homescreen' }} />
+                    <Stack.Screen name="UserTickets" component={UserTickets} options={{ title: 'Homescreen' }} />
                 </Stack.Navigator>
             </View>
         </NavigationContainer>
-    )
-}
-
-const StackPage = ({ stackName, stackComponent }) => {
-    return (
-        <Stack.Screen
-            name={stackName}
-            component={stackComponent}
-        // options={{ title: 'Homescreen' }}
-        />
     )
 }
 
