@@ -1,7 +1,9 @@
+import React, { useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 
 // Pages
 import Header from "../components/Header";
@@ -15,6 +17,8 @@ import UserTickets from '../screens/UserTickets';
 const Stack = createStackNavigator();
 
 const navigation = () => {
+    // const userDetails = useContext(UserContext); 
+
     return (
         <NavigationContainer >
             <View style={styles.navigationScreen}>

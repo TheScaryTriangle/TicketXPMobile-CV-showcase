@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text } from "react-native"
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native"
 
 //Components
 import EventBox from "../components/EventBox"
@@ -34,9 +34,9 @@ const Homescreen = ({ navigation }) => {
      * @notice Triggers when the user taps the eventBox component
      * @todo Navigate to the event page after
      */
-    const buttonPress = () => {
+    const buttonPress = (eventId) => {
         console.log("!")
-        navigation.navigate("EventPage")
+        navigation.navigate("EventPage", { EventId: eventId })
     }
 
 
@@ -57,11 +57,12 @@ const Homescreen = ({ navigation }) => {
     return (
         <View>
             {eventData.map((event, i) => {
+                console.log(event)
                 return (
-                    <View key={i}>
+                    <View key={i} style={ styles.eventBoxContainer}>
                         <EventBox
                             EventData={event}
-                            onPress = {buttonPress}
+                            onPress={() => buttonPress(event._id)}
                         />
                     </View>
                 )
@@ -74,5 +75,21 @@ const Homescreen = ({ navigation }) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    eventBoxContainer: {
+        height: "50%",
+        width: "100%",
+        backgroundColor: '#FFFFFF',
+        borderWidth: 2,
+        borderColor: '#000000',
+        padding: 10,
+        borderRadius: 10,
+    },
+    text: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
+});
 
 export default Homescreen

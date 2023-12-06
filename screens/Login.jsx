@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+
+import userModule from '../api/userModule';
 
 // Components
 import Button from '../components/basic/Button';
 
 const Login = ({ navigation }) => {
+  const [isFailed, setIsFailed] = useState(false)
   // Validation schema using Yup
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
+    username: yup.string().email('Invalid email').required('Email is required'),
     password: yup.string().required('Password is required'),
   });
 
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
     console.log('Login details:', values);
-    navigation.navigate("Homescreen")
+    const loginCall = await userModule.login(values)
+    console.log(loginCall)
+
+    if (loginCall != "Failed") {
+      navigation.navigate("Homescreen")
+    } else {
+      setIsFailed(true)
+    }
   };
 
   return (
     <View style={styles.container}>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ username: '', password: '' }}
         onSubmit={(values) => handleLogin(values)}
         // validationSchema={validationSchema} // Uncomment this for validation
       >
@@ -30,12 +40,12 @@ const Login = ({ navigation }) => {
             <Text>Email</Text>
             <TextInput
               style={styles.input}
-              onChangeText={handleChange('email')}
-              onBlur={handleBlur('email')}
-              value={values.email}
+              onChangeText={handleChange('username')}
+              onBlur={handleBlur('username')}
+              value={values.username}
               keyboardType="email-address"
             />
-            {touched.email && errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+            {touched.username && errors.username && <Text style={styles.errorText}>{errors.username}</Text>}
 
             <Text>Password</Text>
             <TextInput

@@ -29,7 +29,7 @@ const EventBox = ({ EventData, onPress }) => {
 
 const styles = StyleSheet.create({
     eventBoxContainer: {
-        height: "50%",
+        height: "100%",
         width: "100%",
         backgroundColor: '#FFFFFF',
         borderWidth: 2,
