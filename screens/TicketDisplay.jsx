@@ -15,20 +15,20 @@ import ErrorScreen from './ErrorScreen';
  * @dev Page display's the user's ticket
  * @todo Get the specific ticket and pass it to this page
  */
-const TicketDisplay = ({ navigation }) => {
+const TicketDisplay = ({ navigation,route }) => {
     const [qrSVG, setQRSVG] = useState("")
     const [ticketData, setTicketData] = useState(null)
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
-
+    
     useEffect(() => {
         setup()
     }, []);
 
     const setup = async () => {
         try {
-            const qrCode = await qrModule.getQRCode() // Fetch the ticket and event data
+            const qrCode = await qrModule.getQRCode(route.params._id) // Fetch the ticket and event data
             setQRSVG(qrCode.QRSVG)
             setTicketData(qrCode.ticketData) // This dosen't need to be two use states
         } catch (e) {
@@ -49,7 +49,7 @@ const TicketDisplay = ({ navigation }) => {
      * @dev Used to dismiss this page
      */
     const dismiss = () => {
-
+        navigation.goBack()
     }
 
     if (isLoading) {

@@ -1,10 +1,10 @@
 import apiCall from "./controler";
 
-const getQRCode = async () => {
+const getQRCode = async (ticketId) => {
     try {
         const url = `qrModule/GenerateQRCode`;
-        const qrRequest = await apiCall.getURL(url, {
-            ticketId: "TestTicket"
+        const qrRequest = await apiCall.postURL(url, {
+            'ticketId': '65711c717eb2dbd7567625a5'
         });
         return qrRequest;
     } catch (error) {

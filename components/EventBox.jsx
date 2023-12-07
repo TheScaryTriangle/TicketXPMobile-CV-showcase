@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import formatDate from '../utility/formatDate';
 
 /**
  * @dev Used to display an event in a box
@@ -8,20 +9,19 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * @param {Obj} EventData The object of the event
  */
 const EventBox = ({ EventData, onPress }) => {
-
     return (
         <Pressable style={styles.eventBoxContainer} onPress={() => onPress()}>
             <Text style={styles.text}>
-                Event Name: {EventData?.EventName}
+                {EventData.EventName}
             </Text>
             <Text style={styles.text}>
-                Event Details: {EventData?.EventDetails}
+                {EventData.EventDetails}
             </Text>
             <Text style={styles.text}>
-                Ticket Price: {EventData?.TicketPrice}
+                {EventData.TicketPrice} Eth
             </Text>
             <Text style={styles.text}>
-                Event Date: {EventData?.EventDate}
+                {formatDate(EventData.EventDate)}
             </Text>
         </Pressable>
     )
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderWidth: 2,
         borderColor: '#000000',
-        padding: 10,
+        padding: 5,
         borderRadius: 10,
     },
     text: {

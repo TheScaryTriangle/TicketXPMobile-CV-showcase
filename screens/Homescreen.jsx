@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text, StyleSheet } from "react-native"
+import {  View,  StyleSheet } from "react-native"
 
 //Components
 import EventBox from "../components/EventBox"
@@ -10,11 +10,16 @@ import Button from '../components/basic/Button';
 //API
 import eventModule from "../api/eventModule"
 
+//Context
+import { useUser } from '../context/userContext'; 
 
 const Homescreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
     const [eventData, setEventData] = useState([])
+    const userDetails = useUser().user; // For later use
+
+    console.log(userDetails)
     useEffect(() => {
         setup()
     }, []);
@@ -39,7 +44,6 @@ const Homescreen = ({ navigation }) => {
         navigation.navigate("EventPage", { EventId: eventId })
     }
 
-
     if (isLoading) {
         return (
             <Loading />
@@ -54,10 +58,10 @@ const Homescreen = ({ navigation }) => {
             />
         )
     }
+
     return (
         <View>
             {eventData.map((event, i) => {
-                console.log(event)
                 return (
                     <View key={i} style={ styles.eventBoxContainer}>
                         <EventBox
@@ -78,13 +82,12 @@ const Homescreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     eventBoxContainer: {
-        height: "50%",
+        height: "40%",
         width: "100%",
         backgroundColor: '#FFFFFF',
-        borderWidth: 2,
+        borderWidth: 1, // Set to 0 after finished
         borderColor: '#000000',
         padding: 10,
-        borderRadius: 10,
     },
     text: {
         fontSize: 16,

@@ -4,6 +4,7 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 /**
  * @dev Standard button component for the app
  * @dev Do not use any other custom buttons
+ * @notice Button will fill the entire parent container
  */
 const Button = ({ title, onPress, buttonStyle, textStyle }) => {
   return (
@@ -15,6 +16,8 @@ const Button = ({ title, onPress, buttonStyle, textStyle }) => {
 
 const styles = StyleSheet.create({
   button: {
+    width:'100%',
+    heigth:'100%',
     backgroundColor: '#000000',
     paddingHorizontal: 20,
     paddingVertical: 10,

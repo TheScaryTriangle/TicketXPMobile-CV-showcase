@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View, Text } from "react-native"
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet } from "react-native"
 
-//Components
+// Utility
+import formatDate from '../utility/formatDate';
+// Components
 import Loading from '../components/Loading';
 import ErrorScreen from './ErrorScreen';
-//API
+import Button from '../components/basic/Button';
+// API
 import eventModule from "../api/eventModule"
 
 const EventPage = ({ navigation, route }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(false)
     const [eventData, setEventData] = useState({})
-    const paramId = route.params
 
-    console.log(paramId)
-    
     useEffect(() => {
         setup()
     }, []);
@@ -29,6 +28,10 @@ const EventPage = ({ navigation, route }) => {
             setError(true)
         }
         setIsLoading(false)
+    }
+
+    const buyTicket = async () => {
+        console.log("!")
     }
 
     if (isLoading) {
@@ -46,18 +49,48 @@ const EventPage = ({ navigation, route }) => {
         )
     }
     return (
-        <View>
-            <Text>
+        <View style={styles.container}>
+            <Text style={styles.eventName}>
                 {eventData.EventName}
             </Text>
-            <Text>
+            <Text style={styles.eventDetails}>
                 {eventData.EventDetails}
             </Text>
-            <Text>
-                {eventData.EventDate}
+            <Text style={styles.eventDate}>
+                {formatDate(eventData.EventDate)}
             </Text>
+            <Text style={styles.eventDate}>
+                {(eventData.TicketPrice)} Eth
+            </Text>
+            <Button
+                title={'Buy'}
+                onPress={() => buyTicket()}
+            />
         </View>
     )
 }
 
-export default EventPage
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'ceter',
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: '#fff',
+    },
+    eventName: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    eventDetails: {
+        fontSize: 18,
+        marginBottom: 10,
+    },
+    eventDate: {
+        fontSize: 16,
+        color: '#888',
+    },
+});
+
+export default EventPage;

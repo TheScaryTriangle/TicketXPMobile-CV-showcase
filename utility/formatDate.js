@@ -1,9 +1,13 @@
+import moment from 'moment';
+
 /**
- * @dev Used to convert all the dates from the DB
+ * @dev Use this for all of the date returns from the server
+ * @param {*} param0 Date formatted as ISO 8601
+ * @returns Date formated as [January] [5] [2020] [00:00]
  */
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return `${date.getDate()}/${date.getMonth() + 1}/${date.getHours()}`;
+const formatDate = (date) => {
+  const formattedDate = moment(date).format('MMMM Do YYYY HH:mm');
+  return formattedDate
 };
 
-export default formatDate
+export default formatDate;
